@@ -1,7 +1,7 @@
 {
-  "name": "@ladle/react",
-  "version": "5.1.1",
-  "repository": "git@github.com:tajo/ladle.git",
+  "name": "@fabiogaliano/ladle-react",
+  "version": "5.2.0",
+  "repository": "https://github.com/fabiogaliano/ladle.git",
   "author": "Vojtech Miksu <vojtech@miksu.cz>",
   "license": "MIT",
   "type": "module",
@@ -16,8 +16,7 @@
   },
   "packageManager": "pnpm@9.15.1",
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   },
   "files": [
     "lib",
@@ -46,8 +45,8 @@
     "@ladle/react-context": "^1.0.1",
     "@mdx-js/mdx": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
-    "@vitejs/plugin-react": "^4.3.4",
-    "@vitejs/plugin-react-swc": "^3.7.2",
+    "@vitejs/plugin-react": "^6.0.2",
+    "@vitejs/plugin-react-swc": "^4.3.1",
     "axe-core": "^4.10.2",
     "boxen": "^8.0.1",
     "chokidar": "^4.0.3",
@@ -72,8 +71,8 @@
     "remark-gfm": "^4.0.0",
     "source-map": "^0.7.4",
     "vfile": "^6.0.3",
-    "vite": "^6.0.5",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite": "^8.0.14",
+    "vite-tsconfig-paths": "^6.1.1"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
@@ -91,11 +90,13 @@
     "@types/express": "^5.0.0",
     "@types/koa": "^2.15.0",
     "@types/lodash.merge": "^4.6.9",
-    "@types/node": "^22.10.2",
+    "@types/node": "^22.19.19",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "@types/ws": "^8.5.13",
     "cross-env": "^7.0.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
     "vitest": "^2.1.8"
   },
   "engines": {
