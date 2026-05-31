@@ -65,6 +65,10 @@
         "react-dom": "19",
         "typescript": "5"
       }
+    },
+    "overrides": {
+      "serialize-javascript@<7.0.5": "^7.0.5",
+      "d3-color@<3.1.0": "^3.1.0"
     }
   }
 }
