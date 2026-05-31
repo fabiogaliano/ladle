@@ -13,11 +13,11 @@
     "test": "pnpm test-dev && pnpm test-prod"
   },
   "dependencies": {
-    "@ladle/playwright-config": "workspace:*",
     "@fabiogaliano/ladle-react": "workspace:*",
-    "@playwright/test": "^1.49.1",
+    "@ladle/playwright-config": "workspace:*",
+    "@playwright/test": "^1.60.0",
     "cross-env": "^7.0.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
   }
 }

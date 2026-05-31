@@ -14,13 +14,13 @@
     "test": "pnpm test-dev && pnpm test-prod"
   },
   "dependencies": {
-    "@ladle/playwright-config": "workspace:*",
     "@fabiogaliano/ladle-react": "workspace:*",
-    "@playwright/test": "^1.49.1",
-    "axe-playwright": "^2.0.3",
+    "@ladle/playwright-config": "workspace:*",
+    "@playwright/test": "^1.60.0",
+    "axe-playwright": "^2.2.2",
     "cross-env": "^7.0.3",
-    "query-string": "^9.1.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "query-string": "^9.4.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
   }
 }

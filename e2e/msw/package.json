@@ -13,17 +13,17 @@
     "test": "pnpm test-dev && pnpm test-prod"
   },
   "dependencies": {
-    "@ladle/playwright-config": "workspace:*",
     "@fabiogaliano/ladle-react": "workspace:*",
-    "@playwright/test": "^1.49.1",
-    "autoprefixer": "^10.4.20",
+    "@ladle/playwright-config": "workspace:*",
+    "@playwright/test": "^1.60.0",
+    "autoprefixer": "^10.5.0",
     "baseui": "^14.0.0",
     "cross-env": "^7.0.3",
-    "postcss": "^8.4.49",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "postcss": "^8.5.15",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
     "styletron-engine-monolithic": "^1.0.0",
     "styletron-react": "^6.1.1",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.19"
   }
 }

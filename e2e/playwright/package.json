@@ -15,14 +15,14 @@
     "test:update": "cross-env TYPE=update pnpm exec playwright test -u"
   },
   "dependencies": {
-    "@ladle/playwright-config": "workspace:*",
     "@fabiogaliano/ladle-react": "workspace:*",
-    "@playwright/test": "^1.49.1",
-    "@types/sync-fetch": "^0.4.3",
+    "@ladle/playwright-config": "workspace:*",
+    "@playwright/test": "^1.60.0",
+    "@types/sync-fetch": "^0.4.4",
     "cross-env": "^7.0.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "start-server-and-test": "^2.0.9",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "start-server-and-test": "^2.1.5",
     "sync-fetch": "0.6.0-2"
   }
 }
