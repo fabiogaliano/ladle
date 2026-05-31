@@ -1,5 +1,5 @@
-import type { Story } from "@ladle/react";
-import { action } from "@ladle/react";
+import type { Story } from "@fabiogaliano/ladle-react";
+import { action } from "@fabiogaliano/ladle-react";
 
 export const Basic: Story<{
   onClick: () => void;

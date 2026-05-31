@@ -1,4 +1,4 @@
-import type { Story } from "@ladle/react";
+import type { Story } from "@fabiogaliano/ladle-react";
 import { useContext } from "react";
 import { MyContext } from "../.ladle/components";
 

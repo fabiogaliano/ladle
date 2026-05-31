@@ -1,4 +1,4 @@
-import type { StoryDefault, Story } from "@ladle/react";
+import type { StoryDefault, Story } from "@fabiogaliano/ladle-react";
 
 export default {
   decorators: [

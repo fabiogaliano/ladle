@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@ladle/playwright-config": "workspace:*",
-    "@ladle/react": "workspace:*",
+    "@fabiogaliano/ladle-react": "workspace:*",
     "@playwright/test": "^1.49.1",
     "autoprefixer": "^10.4.20",
     "cross-env": "^7.0.3",

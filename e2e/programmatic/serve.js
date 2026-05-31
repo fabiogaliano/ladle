@@ -1,4 +1,4 @@
-import serve from "@ladle/react/serve";
+import serve from "@fabiogaliano/ladle-react/serve";
 
 serve({
   port: 61105,

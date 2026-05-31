@@ -8,7 +8,7 @@ Ladle has a build-in support for [MSW v2](https://mswjs.io/). It allows API mock
 You just have to enable it in your `.ladle/config.mjs`:
 
 ```js
-/** @type {import('@ladle/react').UserConfig} */
+/** @type {import('@fabiogaliano/ladle-react').UserConfig} */
 export default {
   addons: {
     msw: {
@@ -23,8 +23,8 @@ Ladle automatically sets up the MSW service worker for you - copying it over int
 ## Usage
 
 ```tsx
-import type { Story } from "@ladle/react";
-import { msw } from "@ladle/react";
+import type { Story } from "@fabiogaliano/ladle-react";
+import { msw } from "@fabiogaliano/ladle-react";
 import { useEffect, useState } from "react";
 
 const FETCH_URL = "/api-url.json";
@@ -81,6 +81,6 @@ import { setupServer } from 'msw/node'
 You can use the Ladle's version of MSW by using this import instead:
 
 ```js
-import { setupServer } from "@ladle/react/msw-node";
+import { setupServer } from "@fabiogaliano/ladle-react/msw-node";
 ```
 

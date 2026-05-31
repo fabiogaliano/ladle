@@ -154,8 +154,8 @@ const getBaseViteConfig = async (ladleConfig, configFolder, viteConfig) => {
         ...(ladleConfig.addons.a11y.enabled ? ["axe-core"] : []),
         ...(ladleConfig.addons.msw.enabled ? ["msw"] : []),
         ...(ladleConfig.addons.msw.enabled ? ["msw/browser"] : []),
-        ...(inladleMonorepo ? [] : ["@ladle/react"]),
-        ...(!!resolve.alias ? [] : ["react-dom/client"]),
+        ...(inladleMonorepo ? [] : ["@fabiogaliano/ladle-react"]),
+        ...(resolve.alias ? [] : ["react-dom/client"]),
       ],
       entries: [
         path.join(process.cwd(), ".ladle/components.js"),
