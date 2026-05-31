@@ -1,4 +1,4 @@
-import build from "@ladle/react/build";
+import build from "@fabiogaliano/ladle-react/build";
 
 build({
   port: 61105,

@@ -1,4 +1,4 @@
-import type { Story } from "@ladle/react";
+import type { Story } from "@fabiogaliano/ladle-react";
 
 // @ts-ignore
 import classes from "./more.module.css";

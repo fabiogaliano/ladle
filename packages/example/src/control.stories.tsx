@@ -1,4 +1,4 @@
-import type { Story } from "@ladle/react";
+import type { Story } from "@fabiogaliano/ladle-react";
 
 const Card: Story<{
   label: string;

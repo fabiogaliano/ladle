@@ -1,5 +1,5 @@
-import type { Story } from "@ladle/react";
-import { useLink } from "@ladle/react";
+import type { Story } from "@fabiogaliano/ladle-react";
+import { useLink } from "@fabiogaliano/ladle-react";
 import Context from "./context";
 
 export const World: Story = () => {

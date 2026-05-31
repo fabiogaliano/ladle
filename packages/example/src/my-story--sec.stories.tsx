@@ -1,4 +1,4 @@
-import type { Story } from "@ladle/react";
+import type { Story } from "@fabiogaliano/ladle-react";
 import { useState } from "react";
 
 export const Lol: Story = () => {

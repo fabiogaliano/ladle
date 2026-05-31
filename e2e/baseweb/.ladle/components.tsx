@@ -1,7 +1,7 @@
 import { Provider as StyletronProvider } from "styletron-react";
 import { Client as Styletron } from "styletron-engine-monolithic";
 import { LightTheme, DarkTheme, BaseProvider } from "baseui";
-import type { GlobalProvider } from "@ladle/react";
+import type { GlobalProvider } from "@fabiogaliano/ladle-react";
 
 const engine = new Styletron();
 

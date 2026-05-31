@@ -9,7 +9,7 @@ import imgControls from "../static/img/controls.png";
 Stories can be parametrized. You can define the props that your component expects and then update them through the UI without changing the code or creating multiple additional stories with the same component. The example below covers all basic `args` and `argTypes` that Ladle supports:
 
 ```tsx
-import type { Story } from "@ladle/react";
+import type { Story } from "@fabiogaliano/ladle-react";
 
 export const Controls: Story<{
   label: string;
@@ -74,7 +74,7 @@ Ladle detects `args` / `argTypes` and provides the Control UI so you can update 
 You can also create multiple stories by assigning different default `args` / `argTypes` to the same component:
 
 ```tsx
-import type { Story } from "@ladle/react";
+import type { Story } from "@fabiogaliano/ladle-react";
 
 const Card: Story<{
   label: string;

@@ -28,7 +28,7 @@ This story will be displayed in the side nagivation as `Basic` > `Readme`.
 The title in side navigation can be customized:
 
 ```md title="basic.stories.mdx"
-import { Meta } from "@ladle/react";
+import { Meta } from "@fabiogaliano/ladle-react";
 
 <Meta title="Documentation/Welcome" />
 
@@ -44,7 +44,7 @@ This story is displayed as `Documentation` > `Welcome`. If you set the `title` t
 You can also create multiple stories within one `*.stories.mdx` file:
 
 ```md title="multiple.stories.mdx"
-import { Story } from "@ladle/react";
+import { Story } from "@fabiogaliano/ladle-react";
 
 This part will be rendered as a separate `Readme` story.
 
@@ -64,7 +64,7 @@ This part will be rendered as a separate `Readme` story.
 You can also set `meta` parameters:
 
 ```md title="args.stories.mdx"
-import { Story, Meta } from "@ladle/react";
+import { Story, Meta } from "@fabiogaliano/ladle-react";
 
 <Meta meta={{ iframed: true }} />
 

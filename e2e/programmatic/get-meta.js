@@ -1,3 +1,3 @@
-import getMeta from "@ladle/react/meta";
+import getMeta from "@fabiogaliano/ladle-react/meta";
 
 getMeta();

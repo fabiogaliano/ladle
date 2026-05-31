@@ -48,7 +48,7 @@ function mdxPlugin(opts) {
   const { process } = createFormatAwareProcessors({
     SourceMapGenerator,
     development: isDev,
-    providerImportSource: "@ladle/react",
+    providerImportSource: "@fabiogaliano/ladle-react",
     jsx: true,
     remarkPlugins: [remarkGfm],
     rehypePlugins: [[rehypeAddClasses, { "*": "ladle-markdown" }]],
@@ -56,7 +56,7 @@ function mdxPlugin(opts) {
 
   const markdownProcessor = createFormatAwareProcessors({
     format: "md",
-    providerImportSource: "@ladle/react",
+    providerImportSource: "@fabiogaliano/ladle-react",
     remarkPlugins: [remarkGfm],
     rehypePlugins: [rehypeRaw, [rehypeAddClasses, { "*": "ladle-markdown" }]],
   });

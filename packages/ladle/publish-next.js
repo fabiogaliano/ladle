@@ -10,7 +10,7 @@ import {
 const shortHash = execSync("git rev-parse --short HEAD").toString().trim();
 const version = `0.0.0-next-${shortHash}`;
 
-console.log(`Publishing @ladle/react ${version}`);
+console.log(`Publishing @fabiogaliano/ladle-react ${version}`);
 
 const pkgJson = JSON.parse(fs.readFileSync("./package.json"));
 const oldVersion = pkgJson.version;

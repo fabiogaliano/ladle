@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Story } from "@ladle/react";
+import type { Story } from "@fabiogaliano/ladle-react";
 
 export const Big: Story = () => {
   const [val, setVal] = useState(true);

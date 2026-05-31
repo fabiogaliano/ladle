@@ -15,7 +15,7 @@ You can preview the source code of the active story and its origin.
 You can customize the header of the source addon through `.ladle/components.tsx`:
 
 ```tsx title=".ladle/components.tsx"
-import type { SourceHeader } from "@ladle/react";
+import type { SourceHeader } from "@fabiogaliano/ladle-react";
 export const StorySourceHeader: SourceHeader = ({ path }) => {
   return (
     <b>
@@ -41,7 +41,7 @@ const customDarkTheme = {
   },
 };
 
-/** @type {import('@ladle/react').UserConfig} */
+/** @type {import('@fabiogaliano/ladle-react').UserConfig} */
 export default {
   addons: {
     source: {

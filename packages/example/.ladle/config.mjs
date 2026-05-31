@@ -24,7 +24,7 @@ const customDarkTheme = {
     backgroundColor: "#1E1E1E",
   },
 };
-/** @type {import('@ladle/react').UserConfig} */
+/** @type {import('@fabiogaliano/ladle-react').UserConfig} */
 export default {
   appendToHead: `<style>.append {}</style>`,
   addons: {

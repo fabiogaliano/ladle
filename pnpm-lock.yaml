@@ -68,12 +68,12 @@ importers:
 
   e2e/addons:
     dependencies:
+      '@fabiogaliano/ladle-react':
+        specifier: workspace:*
+        version: link:../../packages/ladle
       '@ladle/playwright-config':
         specifier: workspace:*
         version: link:../playwright-config
-      '@ladle/react':
-        specifier: workspace:*
-        version: link:../../packages/ladle
       '@playwright/test':
         specifier: ^1.49.1
         version: 1.49.1
@@ -95,18 +95,18 @@ importers:
 
   e2e/babel:
     dependencies:
+      '@fabiogaliano/ladle-react':
+        specifier: workspace:*
+        version: link:../../packages/ladle
       '@ladle/playwright-config':
         specifier: workspace:*
         version: link:../playwright-config
-      '@ladle/react':
-        specifier: workspace:*
-        version: link:../../packages/ladle
       '@playwright/test':
         specifier: ^1.49.1
         version: 1.49.1
       '@vitejs/plugin-react':
-        specifier: ^4.3.4
-        version: 4.3.4(vite@8.0.14(@types/node@22.19.19)(jiti@2.4.2)(terser@5.37.0)(yaml@2.6.1))
+        specifier: ^6.0.2
+        version: 6.0.2(vite@8.0.14(@types/node@22.19.19)(jiti@2.4.2)(terser@5.37.0)(yaml@2.6.1))
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -119,12 +119,12 @@ importers:
 
   e2e/baseweb:
     dependencies:
+      '@fabiogaliano/ladle-react':
+        specifier: workspace:*
+        version: link:../../packages/ladle
       '@ladle/playwright-config':
         specifier: workspace:*
         version: link:../playwright-config
-      '@ladle/react':
-        specifier: workspace:*
-        version: link:../../packages/ladle
       '@playwright/test':
         specifier: ^1.49.1
         version: 1.49.1
@@ -158,12 +158,12 @@ importers:
 
   e2e/config:
     dependencies:
+      '@fabiogaliano/ladle-react':
+        specifier: workspace:*
+        version: link:../../packages/ladle
       '@ladle/playwright-config':
         specifier: workspace:*
         version: link:../playwright-config
-      '@ladle/react':
-        specifier: workspace:*
-        version: link:../../packages/ladle
       '@playwright/test':
         specifier: ^1.49.1
         version: 1.49.1
@@ -179,12 +179,12 @@ importers:
 
   e2e/config-ts:
     dependencies:
+      '@fabiogaliano/ladle-react':
+        specifier: workspace:*
+        version: link:../../packages/ladle
       '@ladle/playwright-config':
         specifier: workspace:*
         version: link:../playwright-config
-      '@ladle/react':
-        specifier: workspace:*
-        version: link:../../packages/ladle
       '@playwright/test':
         specifier: ^1.49.1
         version: 1.49.1
@@ -200,12 +200,12 @@ importers:
 
   e2e/css:
     dependencies:
+      '@fabiogaliano/ladle-react':
+        specifier: workspace:*
+        version: link:../../packages/ladle
       '@ladle/playwright-config':
         specifier: workspace:*
         version: link:../playwright-config
-      '@ladle/react':
-        specifier: workspace:*
-        version: link:../../packages/ladle
       '@playwright/test':
         specifier: ^1.49.1
         version: 1.49.1
@@ -230,12 +230,12 @@ importers:
 
   e2e/decorators:
     dependencies:
+      '@fabiogaliano/ladle-react':
+        specifier: workspace:*
+        version: link:../../packages/ladle
       '@ladle/playwright-config':
         specifier: workspace:*
         version: link:../playwright-config
-      '@ladle/react':
-        specifier: workspace:*
-        version: link:../../packages/ladle
       '@playwright/test':
         specifier: ^1.49.1
         version: 1.49.1
@@ -251,12 +251,12 @@ importers:
 
   e2e/msw:
     dependencies:
+      '@fabiogaliano/ladle-react':
+        specifier: workspace:*
+        version: link:../../packages/ladle
       '@ladle/playwright-config':
         specifier: workspace:*
         version: link:../playwright-config
-      '@ladle/react':
-        specifier: workspace:*
-        version: link:../../packages/ladle
       '@playwright/test':
         specifier: ^1.49.1
         version: 1.49.1
@@ -290,12 +290,12 @@ importers:
 
   e2e/playwright:
     dependencies:
+      '@fabiogaliano/ladle-react':
+        specifier: workspace:*
+        version: link:../../packages/ladle
       '@ladle/playwright-config':
         specifier: workspace:*
         version: link:../playwright-config
-      '@ladle/react':
-        specifier: workspace:*
-        version: link:../../packages/ladle
       '@playwright/test':
         specifier: ^1.49.1
         version: 1.49.1
@@ -326,12 +326,12 @@ importers:
 
   e2e/programmatic:
     dependencies:
+      '@fabiogaliano/ladle-react':
+        specifier: workspace:*
+        version: link:../../packages/ladle
       '@ladle/playwright-config':
         specifier: workspace:*
         version: link:../playwright-config
-      '@ladle/react':
-        specifier: workspace:*
-        version: link:../../packages/ladle
       '@playwright/test':
         specifier: ^1.49.1
         version: 1.49.1
@@ -347,12 +347,12 @@ importers:
 
   e2e/provider:
     dependencies:
+      '@fabiogaliano/ladle-react':
+        specifier: workspace:*
+        version: link:../../packages/ladle
       '@ladle/playwright-config':
         specifier: workspace:*
         version: link:../playwright-config
-      '@ladle/react':
-        specifier: workspace:*
-        version: link:../../packages/ladle
       '@playwright/test':
         specifier: ^1.49.1
         version: 1.49.1
@@ -368,7 +368,7 @@ importers:
 
   packages/example:
     dependencies:
-      '@ladle/react':
+      '@fabiogaliano/ladle-react':
         specifier: workspace:*
         version: link:../ladle
       react:
@@ -1146,18 +1146,6 @@ packages:
 
   '@babel/plugin-transform-react-jsx-development@7.25.9':
     resolution: {integrity: sha512-9mj6rm7XVYs4mdLIpbZnHOYdpW42uoiBCTVowg7sP1thUOiANgMb4UtpRivR0pp5iL+ocvUv7X4mZgFRpJEzGw==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-
-  '@babel/plugin-transform-react-jsx-self@7.25.9':
-    resolution: {integrity: sha512-y8quW6p0WHkEhmErnfe58r7x0A70uKphQm8Sp8cV7tjNQwK56sNVK0M73LK3WuYmsuyrftut4xAkjjgU0twaMg==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-
-  '@babel/plugin-transform-react-jsx-source@7.25.9':
-    resolution: {integrity: sha512-+iqjT8xmXhhYv4/uiYd8FNQsraMFZIfxVSqxxVSZP0WbbSAWvBXAul0m/zu+7Vv4O/3WtApy9pmaTMiumEZgfg==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -3002,12 +2990,6 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       vite: ^4 || ^5 || ^6 || ^7 || ^8
-
-  '@vitejs/plugin-react@4.3.4':
-    resolution: {integrity: sha512-SCCPBJtYLdE8PX/7ZQAs1QAZ8Jqwih+0VBLum1EGqmCCQal+MIUqLCzj3ZUy8ufbC0cAM4LRlSTm7IQJwWT4ug==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    peerDependencies:
-      vite: ^4.2.0 || ^5.0.0 || ^6.0.0
 
   '@vitejs/plugin-react@6.0.2':
     resolution: {integrity: sha512-DlSMqo4WhThw4vB8Mpn0Woe9J+Jfq1geJ61AKW0QEgLzGMNwtIMdxbDUzLxcun8W7NbJO0e2Jg/Nxm3cCSVzzg==}
@@ -7331,10 +7313,6 @@ packages:
       react: '*'
       react-dom: '*'
 
-  react-refresh@0.14.2:
-    resolution: {integrity: sha512-jCvmsr+1IUSMUyzOkRcvnVbX3ZYC6g9TDrDbFuFmRDq7PD4yaGbLKNQL6k2jnArV8hjYxh7hVhAZB6s9HDGpZA==}
-    engines: {node: '>=0.10.0'}
-
   react-router-config@5.1.1:
     resolution: {integrity: sha512-DuanZjaD8mQp1ppHjgnnUnyOlqYXZVjnov/JzFhjLEwd3Z4dYjMSnqrEzzGThH47vpCOqPPwJM2FtthLeJ8Pbg==}
     peerDependencies:
@@ -9524,16 +9502,6 @@ snapshots:
       '@babel/plugin-transform-react-jsx': 7.25.9(@babel/core@7.26.0)
     transitivePeerDependencies:
       - supports-color
-
-  '@babel/plugin-transform-react-jsx-self@7.25.9(@babel/core@7.26.0)':
-    dependencies:
-      '@babel/core': 7.26.0
-      '@babel/helper-plugin-utils': 7.25.9
-
-  '@babel/plugin-transform-react-jsx-source@7.25.9(@babel/core@7.26.0)':
-    dependencies:
-      '@babel/core': 7.26.0
-      '@babel/helper-plugin-utils': 7.25.9
 
   '@babel/plugin-transform-react-jsx@7.25.9(@babel/core@7.26.0)':
     dependencies:
@@ -12200,17 +12168,6 @@ snapshots:
       vite: 8.0.14(@types/node@22.19.19)(jiti@2.4.2)(terser@5.37.0)(yaml@2.6.1)
     transitivePeerDependencies:
       - '@swc/helpers'
-
-  '@vitejs/plugin-react@4.3.4(vite@8.0.14(@types/node@22.19.19)(jiti@2.4.2)(terser@5.37.0)(yaml@2.6.1))':
-    dependencies:
-      '@babel/core': 7.26.0
-      '@babel/plugin-transform-react-jsx-self': 7.25.9(@babel/core@7.26.0)
-      '@babel/plugin-transform-react-jsx-source': 7.25.9(@babel/core@7.26.0)
-      '@types/babel__core': 7.20.5
-      react-refresh: 0.14.2
-      vite: 8.0.14(@types/node@22.19.19)(jiti@2.4.2)(terser@5.37.0)(yaml@2.6.1)
-    transitivePeerDependencies:
-      - supports-color
 
   '@vitejs/plugin-react@6.0.2(vite@8.0.14(@types/node@22.19.19)(jiti@2.4.2)(terser@5.37.0)(yaml@2.6.1))':
     dependencies:
@@ -17263,8 +17220,6 @@ snapshots:
     dependencies:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
-
-  react-refresh@0.14.2: {}
 
   react-router-config@5.1.1(react-router@5.3.4(react@18.3.1))(react@18.3.1):
     dependencies:

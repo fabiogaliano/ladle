@@ -24,7 +24,7 @@ You can use these default viewport widths (px):
 An application might need to optimize for a different set of devices, so you change the defaults through the `.ladle/config.mjs` configuration:
 
 ```js title=".ladle/config.mjs"
-/** @type {import('@ladle/react').UserConfig} */
+/** @type {import('@fabiogaliano/ladle-react').UserConfig} */
 export default {
   addons: {
     width: {
@@ -45,7 +45,7 @@ export default {
 You can set the global default (above) or per-story via `meta`:
 
 ```ts
-import type { StoryDefault, Story } from "@ladle/react";
+import type { StoryDefault, Story } from "@fabiogaliano/ladle-react";
 
 export default {
   meta: {
@@ -70,7 +70,7 @@ Ladle doesn't normally use iframes around your stories but to make this addon wo
 Some story components like modals might use the entire screen and cover Ladle's navigation. If you want to restrict the story's space, you can activate the iframed version of Ladle even without specifying a viewport width:
 
 ```js
-import type { Story } from "@ladle/react";
+import type { Story } from "@fabiogaliano/ladle-react";
 
 export const Modal: Story = () => <FullScreenModal />;
 Modal.meta = { iframed: true };

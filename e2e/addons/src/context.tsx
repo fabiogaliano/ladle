@@ -1,5 +1,5 @@
 // @ts-ignore
-import { useLadleContext } from "@ladle/react";
+import { useLadleContext } from "@fabiogaliano/ladle-react";
 
 function Context() {
   const { globalState } = useLadleContext();
