@@ -3,7 +3,7 @@
 import path from "path";
 import { promises as fs } from "fs";
 import { performance } from "perf_hooks";
-import { globby } from "globby";
+import { glob } from "tinyglobby";
 import viteProd from "./vite-prod.js";
 import debug from "./debug.js";
 import { getMetaJsonString } from "./vite-plugin/generate/get-meta-json.js";
@@ -22,7 +22,7 @@ const build = async (params = {}) => {
   const { configFolder, config } = await applyCLIConfig(params);
   await viteProd(config, configFolder);
   const entryData = await getEntryData(
-    await globby(
+    await glob(
       Array.isArray(config.stories) ? config.stories : [config.stories],
     ),
   );

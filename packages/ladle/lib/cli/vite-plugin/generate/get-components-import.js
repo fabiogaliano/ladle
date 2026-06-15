@@ -1,8 +1,7 @@
 import fs from "fs";
 import path from "path";
 import debugFactory from "debug";
-import { traverse } from "../babel.js";
-import getAst from "../get-ast.js";
+import parseFile from "../parse-file.js";
 import cleanupWindowsPath from "./cleanup-windows-path.js";
 
 const debug = debugFactory("ladle:vite");
@@ -13,19 +12,39 @@ const debug = debugFactory("ladle:vite");
  * @param {string} filename
  */
 const checkIfNamedExportExists = (namedExport, sourceCode, filename) => {
-  let exists = false;
-  const ast = getAst(sourceCode, filename);
-  traverse(ast, {
-    /**
-     * @param {any} astPath
-     */
-    ExportNamedDeclaration: (astPath) => {
-      if (astPath.node.declaration.declarations[0].id.name === namedExport) {
-        exists = true;
+  const program = parseFile(filename, sourceCode);
+  for (const node of program.body) {
+    if (node.type !== "ExportNamedDeclaration") continue;
+    // ignore re-exports like `export { x } from './y'`
+    if (node.source !== null) continue;
+    if (node.declaration) {
+      if (
+        node.declaration.type === "VariableDeclaration" &&
+        node.declaration.declarations.some(
+          (/** @type {any} */ d) =>
+            d.id.type === "Identifier" && d.id.name === namedExport,
+        )
+      ) {
+        return true;
       }
-    },
-  });
-  return exists;
+      if (
+        (node.declaration.type === "FunctionDeclaration" ||
+          node.declaration.type === "ClassDeclaration") &&
+        node.declaration.id?.name === namedExport
+      ) {
+        return true;
+      }
+    } else if (node.specifiers?.length > 0) {
+      if (
+        node.specifiers.some(
+          (/** @type {any} */ s) => s.exported.name === namedExport,
+        )
+      ) {
+        return true;
+      }
+    }
+  }
+  return false;
 };
 
 /**

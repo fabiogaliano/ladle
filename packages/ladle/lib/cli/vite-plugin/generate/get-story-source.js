@@ -1,6 +1,4 @@
 import { createHash } from "crypto";
-import t from "@babel/types";
-import { generate } from "../babel.js";
 
 /**
  * @param entryData {import('../../../shared/types').EntryData}
@@ -25,50 +23,28 @@ const getStorySource = (entryData, enabled) => {
     });
   });
 
-  const fileSources = generate(
-    t.variableDeclaration("let", [
-      t.variableDeclarator(
-        t.identifier("fileSourceCodes"),
-        t.objectExpression(
-          Object.keys(fileSourceCodes).map((fileHash) =>
-            t.objectProperty(
-              t.stringLiteral(fileHash),
-              t.templateLiteral(
-                [
-                  t.templateElement(
-                    {
-                      raw: encodeURIComponent(fileSourceCodes[fileHash]),
-                      cooked: encodeURIComponent(fileSourceCodes[fileHash]),
-                    },
-                    true,
-                  ),
-                ],
-                [],
-              ),
-            ),
-          ),
-        ),
-      ),
-    ]),
-  ).code;
+  // encodeURIComponent escapes backticks, `$` and `\` so the value is safe to
+  // embed inside a template literal
+  const fileSourceEntries = Object.keys(fileSourceCodes).map(
+    (fileHash) =>
+      `  ${JSON.stringify(fileHash)}: \`${encodeURIComponent(
+        fileSourceCodes[fileHash],
+      )}\``,
+  );
+  const fileSources = `let fileSourceCodes = {\n${fileSourceEntries.join(
+    ",\n",
+  )}\n};`;
 
-  const storyToSource = generate(
-    t.exportNamedDeclaration(
-      t.variableDeclaration("let", [
-        t.variableDeclarator(
-          t.identifier("storySource"),
-          t.objectExpression(
-            Object.keys(storySource).map((storyId) =>
-              t.objectProperty(
-                t.stringLiteral(storyId),
-                t.identifier(`fileSourceCodes["${storySource[storyId]}"]`),
-              ),
-            ),
-          ),
-        ),
-      ]),
-    ),
-  ).code;
+  const storySourceEntries = Object.keys(storySource).map(
+    (storyId) =>
+      `  ${JSON.stringify(storyId)}: fileSourceCodes[${JSON.stringify(
+        storySource[storyId],
+      )}]`,
+  );
+  const storyToSource = `export let storySource = {\n${storySourceEntries.join(
+    ",\n",
+  )}\n};`;
+
   return `${fileSources}\n${storyToSource}\n`;
 };
 

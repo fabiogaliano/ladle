@@ -20,7 +20,6 @@ export type { UserConfig } from "../shared/types";
 export * as ui from "./src/ui";
 export * as dialog from "./src/dialog";
 export * as icons from "./src/icons";
-export { useMDXComponents } from "@mdx-js/react";
 export const Story = (props: any) => props.children;
 export const Meta = (props: any) => props.children;
 export const Description = (props: any) => props.children;

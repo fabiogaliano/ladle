@@ -1,7 +1,7 @@
 import path from "path";
 import react from "@vitejs/plugin-react-swc";
 import fs from "fs";
-import { globby } from "globby";
+import { glob } from "tinyglobby";
 import { fileURLToPath } from "url";
 import tsconfigPaths from "vite-tsconfig-paths";
 import getAppRoot from "./get-app-root.js";
@@ -9,7 +9,6 @@ import ladlePlugin from "./vite-plugin/vite-plugin.js";
 import debug from "./debug.js";
 import mergeViteConfigs from "./merge-vite-configs.js";
 import getUserViteConfig from "./get-user-vite-config.js";
-import mdxPlugin from "./vite-plugin/mdx-plugin.js";
 import copyMswWorker from "./copy-msw-worker.js";
 
 /**
@@ -104,7 +103,7 @@ const getBaseViteConfig = async (ladleConfig, configFolder, viteConfig) => {
   }
 
   const storyEntries = (
-    await globby(
+    await glob(
       Array.isArray(ladleConfig.stories)
         ? ladleConfig.stories
         : [ladleConfig.stories],
@@ -149,7 +148,6 @@ const getBaseViteConfig = async (ladleConfig, configFolder, viteConfig) => {
         "lodash.merge",
         "query-string",
         "prism-react-renderer",
-        "@mdx-js/react",
         "@ladle/react-context",
         ...(ladleConfig.addons.a11y.enabled ? ["axe-core"] : []),
         ...(ladleConfig.addons.msw.enabled ? ["msw"] : []),
@@ -166,7 +164,6 @@ const getBaseViteConfig = async (ladleConfig, configFolder, viteConfig) => {
       ],
     },
     plugins: [
-      mdxPlugin({ mode: viteConfig.mode || "production" }),
       !hasTSConfigPathPlugin &&
         !process.versions.pnp &&
         tsconfigPaths({

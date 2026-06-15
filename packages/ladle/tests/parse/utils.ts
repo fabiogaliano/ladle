@@ -1,7 +1,7 @@
-import traverse from "@babel/traverse";
 import cloneDeep from "../../lib/cli/deps/lodash.clonedeep.js";
 import merge from "lodash.merge";
-import getAst from "../../lib/cli/vite-plugin/get-ast.js";
+import parseFile from "../../lib/cli/vite-plugin/parse-file.js";
+import { buildLineOffsets } from "../../lib/cli/vite-plugin/offset-to-line.js";
 import type { ParsedStoriesResult } from "../../lib/shared/types";
 
 export const parseWithFn = (
@@ -24,9 +24,15 @@ export const parseWithFn = (
     input,
   );
   const end: ParsedStoriesResult = cloneDeep(start);
-  (traverse as any)(getAst(code, filename) as any, {
-    [visitor]: fn.bind(this, end),
-  });
+  const program: any = parseFile(filename, code);
+  const ctx = { lineOffsets: buildLineOffsets(code), body: program.body };
+  if (visitor === "Program") {
+    fn(end, program, ctx);
+  } else {
+    for (const node of program.body) {
+      if (node.type === visitor) fn(end, node, ctx);
+    }
+  }
   return end;
 };
 

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { MDXProvider } from "@mdx-js/react";
 import SynchronizeHead from "./synchronize-head";
 import ErrorBoundary from "./error-boundary";
 import { stories, Provider } from "virtual:generated-list";
@@ -9,7 +8,6 @@ import { ActionType } from "../../shared/types";
 import config from "./get-config";
 import StoryNotFound from "./story-not-found";
 import { ModeState } from "../../shared/types";
-import { CodeHighlight } from "./addons/source";
 import { Frame } from "./iframe";
 import { set, reset } from "./mock-date";
 
@@ -111,29 +109,18 @@ const Story = ({
             rtl={globalState.rtl}
             width={width}
           >
-            <MDXProvider
-              components={{
-                code: (props) => (
-                  <CodeHighlight
-                    {...(props as any)}
-                    theme={globalState.theme}
-                  />
-                ),
-              }}
+            <Provider
+              config={config}
+              globalState={globalState}
+              dispatch={dispatch}
+              storyMeta={storyDataMeta}
             >
-              <Provider
-                config={config}
-                globalState={globalState}
-                dispatch={dispatch}
-                storyMeta={storyDataMeta}
-              >
-                {storyData ? (
-                  React.createElement(storyData.component)
-                ) : (
-                  <StoryNotFound activeStory={globalState.story} />
-                )}
-              </Provider>
-            </MDXProvider>
+              {storyData ? (
+                React.createElement(storyData.component)
+              ) : (
+                <StoryNotFound activeStory={globalState.story} />
+              )}
+            </Provider>
           </SynchronizeHead>
         </StoryFrame>
       </React.Suspense>

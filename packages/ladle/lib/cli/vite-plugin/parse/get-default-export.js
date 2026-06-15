@@ -1,33 +1,54 @@
 import { converter } from "../ast-to-obj.js";
 
 /**
- * @param {import('../../../shared/types').ParsedStoriesResult} result
- * @param {any} astPath
+ * Resolves `export default foo` by finding `const foo = {...}` at the top level
+ * and returning its initializer. Replaces Babel's scope.bindings lookup; like
+ * the original it only handles initializers (not later reassignments).
+ * @param {any[]} body
+ * @param {string} name
+ * @returns {any}
  */
-const getDefaultExport = (result, astPath) => {
-  if (!astPath) return;
+const resolveIdentifierInit = (body, name) => {
+  for (const node of body) {
+    if (node.type === "VariableDeclaration") {
+      for (const declarator of node.declarations) {
+        if (declarator.id.type === "Identifier" && declarator.id.name === name) {
+          return declarator.init;
+        }
+      }
+    }
+  }
+  return undefined;
+};
+
+/**
+ * @param {import('../../../shared/types').ParsedStoriesResult} result
+ * @param {any} node
+ * @param {{ body: any[] }} ctx
+ */
+const getDefaultExport = (result, node, ctx) => {
+  if (!node) return;
   try {
-    let objNode = astPath.node.declaration;
-    if (astPath.node.declaration.type === "Identifier") {
-      objNode =
-        astPath.scope.bindings[astPath.node.declaration.name].path.node.init;
+    const declaration = node.declaration;
+    let objNode = declaration;
+    if (declaration.type === "Identifier") {
+      objNode = resolveIdentifierInit(ctx.body, declaration.name);
     }
     if (
-      ["TSAsExpression", "TSSatisfiesExpression"].includes(
-        astPath.node.declaration.type,
-      )
+      declaration.type === "TSAsExpression" ||
+      declaration.type === "TSSatisfiesExpression"
     ) {
-      objNode = astPath.node.declaration.expression;
+      objNode = declaration.expression;
     }
     objNode &&
       objNode.properties.forEach((/** @type {any} */ prop) => {
-        if (prop.type === "ObjectProperty" && prop.key.name === "title") {
-          if (prop.value.type !== "StringLiteral") {
+        if (prop.type === "Property" && prop.key.name === "title") {
+          if (prop.value.type !== "Literal" || typeof prop.value.value !== "string") {
             throw new Error("Default title must be a string literal.");
           }
           result.exportDefaultProps.title = prop.value.value;
         } else if (
-          prop.type === "ObjectProperty" &&
+          prop.type === "Property" &&
           prop.key.type === "Identifier" &&
           prop.key.name === "meta"
         ) {

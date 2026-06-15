@@ -1,5 +1,6 @@
 import cloneDeep from "../../deps/lodash.clonedeep.js";
 import merge from "lodash.merge";
+import { getLine } from "../offset-to-line.js";
 import {
   getEncodedStoryName,
   storyDelimiter,
@@ -9,7 +10,8 @@ import {
 
 /**
  * @param {import('../../../shared/types').ParsedStoriesResult} result
- * @param {any} astPath
+ * @param {any} node
+ * @param {{ lineOffsets: Int32Array }} ctx
  */
 const getNamedExports = (
   {
@@ -21,14 +23,19 @@ const getNamedExports = (
     stories,
     entry,
   },
-  astPath,
+  node,
+  ctx,
 ) => {
+  // skip re-exports like `export { x } from './y'` — they aren't local stories
+  // and would otherwise produce broken lazy imports
+  if (node.source !== null) return;
+
   /**
-   * @param {any} namedExportDeclaration
+   * @param {any} locNode a node carrying start/end offsets
    * @param {string} namedExport
    * @returns {import('../../../shared/types').StoryEntry} result
    */
-  const namedExportToStory = (namedExportDeclaration, namedExport) => {
+  const namedExportToStory = (locNode, namedExport) => {
     if (namedExport.includes("__")) {
       throw new Error(
         `Story named ${namedExport} can't contain "__". It's reserved for internal encoding. Please rename this export.`,
@@ -63,19 +70,16 @@ const getNamedExports = (
       storyId,
       componentName,
       namedExport,
-      locStart: namedExportDeclaration.loc.start.line,
-      locEnd: namedExportDeclaration.loc.end.line,
+      locStart: getLine(ctx.lineOffsets, locNode.start),
+      locEnd: getLine(ctx.lineOffsets, locNode.end),
     };
     return story;
   };
 
-  /**
-   * @type {string}
-   */
   // Inline exports, such as: export const Story = () => <h1>Export List</h1>;
-  if (astPath.node?.declaration?.type) {
+  if (node.declaration?.type) {
     let namedExport = "";
-    const namedExportDeclaration = astPath.node?.declaration;
+    const namedExportDeclaration = node.declaration;
     if (namedExportDeclaration.type === "ClassDeclaration") {
       namedExport = namedExportDeclaration.id.name;
     } else if (namedExportDeclaration.type === "VariableDeclaration") {
@@ -89,10 +93,10 @@ const getNamedExports = (
     }
     const story = namedExportToStory(namedExportDeclaration, namedExport);
     stories.push(story);
-  } else if (astPath.node?.specifiers.length > 0) {
+  } else if (node.specifiers?.length > 0) {
     // It's an export block export, such as: { story, story as storyRenamed };
-    astPath.node?.specifiers.forEach(
-      /** type * @param {any} specifier */
+    node.specifiers.forEach(
+      /** @param {any} specifier */
       (specifier) => {
         const namedExport = specifier.exported.name;
         const story = namedExportToStory(specifier, namedExport);

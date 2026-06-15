@@ -4,7 +4,7 @@ import { themes } from "prism-react-renderer";
  * @type {import('../shared/types').Config}
  */
 export default {
-  stories: "src/**/*.stories.{js,jsx,ts,tsx,mdx}",
+  stories: "src/**/*.stories.{js,jsx,ts,tsx}",
   defaultStory: "", // default story id to load, alphabetical by default
   storyOrder: (stories) => stories, // default is alphabetical
   viteConfig: undefined,

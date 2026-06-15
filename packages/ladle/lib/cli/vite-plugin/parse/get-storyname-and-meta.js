@@ -2,10 +2,10 @@ import { converter } from "../ast-to-obj.js";
 
 /**
  * @param {import('../../../shared/types').ParsedStoriesResult} result
- * @param {any} astPath
+ * @param {any} program the oxc Program node
  */
-const getStorynameAndMeta = (result, astPath) => {
-  astPath.node.body.forEach((/** @type {any} */ child) => {
+const getStorynameAndMeta = (result, program) => {
+  program.body.forEach((/** @type {any} */ child) => {
     if (
       child.type === "ExpressionStatement" &&
       child.expression.left &&
@@ -13,7 +13,10 @@ const getStorynameAndMeta = (result, astPath) => {
     ) {
       if (child.expression.left.property.name === "storyName") {
         const storyExport = child.expression.left.object.name;
-        if (child.expression.right.type !== "StringLiteral") {
+        if (
+          child.expression.right.type !== "Literal" ||
+          typeof child.expression.right.value !== "string"
+        ) {
           throw new Error(
             `${storyExport}.storyName in ${result.entry} must be a string literal.`,
           );
